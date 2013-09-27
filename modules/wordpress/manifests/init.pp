@@ -3,9 +3,10 @@
 class wordpress::install {
 
   # Create a directory
-  file { "/wordpress":
+  file { ["/wordpress", "/wordpress/wordpress"]:
     ensure => "directory",
   }
+
 
   # Create the Wordpress database
   exec { 'create-database':
