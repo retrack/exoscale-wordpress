@@ -3,7 +3,7 @@
 class wordpress::install {
 
   # Create a directory
-  file { ["/wordpress", "/wordpress/wordpress"]:
+  file { "/wordpress":
     ensure => "directory",
   }
 
@@ -33,6 +33,7 @@ class wordpress::install {
     command => '/bin/tar xzvf /wordpress/latest.tar.gz',
     require => Exec['download-wordpress'],
     creates => '/wordpress/wordpress',
+    before => File['/wordpress/wordpress/wp-config.php']
   }
 
   # Import a MySQL database for a basic wordpress site.
@@ -51,7 +52,8 @@ class wordpress::install {
   file { '/wordpress/wordpress/wp-config.php':
     ensure => file,
     path => '/wordpress/wordpress/wp-config.php',
-    content => template('wordpress/wp-config.php.erb')
+    content => template('wordpress/wp-config.php.erb'),
+    source => '/wordpress/wordpress'
   }
 
 }
