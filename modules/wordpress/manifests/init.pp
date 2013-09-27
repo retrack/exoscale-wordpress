@@ -40,8 +40,8 @@ class wordpress::install {
   }
 
   exec { 'load-db':
-    command => '/usr/bin/mysql -u wordpress -pwordpress wordpress < /tmp/wordpress-db.sql && touch /home/wordpress/db-created',
-    creates => '/home/wordpress/db-created',
+    command => '/usr/bin/mysql -u wordpress -pwordpress wordpress < /tmp/wordpress-db.sql && touch /wordpress/db-created',
+    creates => '/wordpress/db-created',
   }
 
   # Copy a working wp-config.php file for the wordpress setup.
