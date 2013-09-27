@@ -1,11 +1,11 @@
 <VirtualHost *:80>
 	ServerAdmin webmaster@localhost
 
-	DocumentRoot /vagrant/wordpress
+	DocumentRoot /wordpress/wordpress
 	RewriteLogLevel 9
-	RewriteLog ${APACHE_LOG_DIR}/vagrant.rewrite.log
+	RewriteLog ${APACHE_LOG_DIR}/wordpress.rewrite.log
 
-	<Directory /vagrant/wordpress>
+	<Directory /wordpress/wordpress>
 	    Options Indexes FollowSymLinks
 	    AllowOverride None
 	    RewriteEngine On
@@ -16,11 +16,11 @@
 	    RewriteRule . /index.php [L]
 	</Directory>
 
-	ErrorLog ${APACHE_LOG_DIR}/vagrantpress.error.log
+	ErrorLog ${APACHE_LOG_DIR}/wordpresspress.error.log
 
 	# Possible values include: debug, info, notice, warn, error, crit,
 	# alert, emerg.
 	LogLevel warn
 
-	CustomLog ${APACHE_LOG_DIR}/vagrantpress.access.log combined
+	CustomLog ${APACHE_LOG_DIR}/wordpress.access.log combined
 </VirtualHost>
