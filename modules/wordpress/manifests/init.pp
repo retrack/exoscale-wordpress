@@ -38,7 +38,7 @@ class wordpress::install {
   file { '/tmp/wordpress-db.sql':
     ensure => file,
     path => '/tmp/wordpress-db.sql',
-    content => template('wordpress/wordpress-db.sql.erb');
+    content => template('wordpress/wordpress-db.sql.erb')
   }
 
   exec { 'load-db':
