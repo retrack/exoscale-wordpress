@@ -40,7 +40,8 @@ class wordpress::install {
   file { '/tmp/wordpress-db.sql':
     ensure => file,
     path => '/tmp/wordpress-db.sql',
-    content => template('wordpress/wordpress-db.sql.erb')
+    content => template('wordpress/wordpress-db.sql.erb'),
+    before => File['/wordpress/wordpress/wp-config.php']
   }
 
   exec { 'load-db':
@@ -53,7 +54,6 @@ class wordpress::install {
     ensure => file,
     path => '/wordpress/wordpress/wp-config.php',
     content => template('wordpress/wp-config.php.erb'),
-    source => '/wordpress/wordpress'
   }
 
 }
