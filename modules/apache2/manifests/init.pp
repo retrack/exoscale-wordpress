@@ -17,7 +17,7 @@ class apache2::install {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source  => '/vagrant/files/etc/apache2/httpd.conf',
+    source  => '/etc/puppet/modules/apache2/files/httpd.conf',
     require => Package['apache2'],
     notify  => Service['apache2'],
   }
@@ -27,7 +27,7 @@ class apache2::install {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source  => '/vagrant/files/etc/apache2/sites-available/default',
+    source  => '/etc/puppet/modules/apache2/files/default',
     require => Package['apache2'],
     notify  => Service['apache2']
   }
@@ -37,7 +37,7 @@ class apache2::install {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source  => '/vagrant/files/etc/apache2/mods-available/rewrite.load',
+    source  => '/etc/puppet/modules/apache2/files/rewrite.load',
     require => Package['apache2'],
     notify  => Service['apache2']
   }

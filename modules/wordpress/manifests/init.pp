@@ -4,13 +4,13 @@ class wordpress::install {
 
   # Create the Wordpress database
   exec { 'create-database':
-    unless  => '/usr/bin/mysql -u root -pvagrant wordpress',
-    command => '/usr/bin/mysql -u root -pvagrant --execute=\'create database wordpress\'',
+    unless  => '/usr/bin/mysql -u root -pwordpress wordpress',
+    command => '/usr/bin/mysql -u root -pwordpress --execute=\'create database wordpress\'',
   }
 
   exec { 'create-user':
     unless  => '/usr/bin/mysql -u wordpress -pwordpress',
-    command => '/usr/bin/mysql -u root -pvagrant --execute="GRANT ALL PRIVILEGES ON wordpress.* TO \'wordpress\'@\'localhost\' IDENTIFIED BY \'wordpress\'"',
+    command => '/usr/bin/mysql -u root -pwordpress --execute="GRANT ALL PRIVILEGES ON wordpress.* TO \'wordpress\'@\'localhost\' IDENTIFIED BY \'wordpress\'"',
   }
 
   # Get a new copy of the latest wordpress release
@@ -18,15 +18,15 @@ class wordpress::install {
 
   exec { 'download-wordpress': #tee hee
     command => '/usr/bin/wget http://wordpress.org/latest.tar.gz',
-    cwd     => '/vagrant/',
-    creates => '/vagrant/latest.tar.gz'
+    cwd     => '/wordpress/',
+    creates => '/wordpress/latest.tar.gz'
   }
 
   exec { 'untar-wordpress':
-    cwd     => '/vagrant/',
-    command => '/bin/tar xzvf /vagrant/latest.tar.gz',
+    cwd     => '/wordpress/',
+    command => '/bin/tar xzvf /wordpress/latest.tar.gz',
     require => Exec['download-wordpress'],
-    creates => '/vagrant/wordpress',
+    creates => '/wordpress/wordpress',
   }
 
   # Import a MySQL database for a basic wordpress site.
@@ -35,12 +35,12 @@ class wordpress::install {
   }
 
   exec { 'load-db':
-    command => '/usr/bin/mysql -u wordpress -pwordpress wordpress < /tmp/wordpress-db.sql && touch /home/vagrant/db-created',
-    creates => '/home/vagrant/db-created',
+    command => '/usr/bin/mysql -u wordpress -pwordpress wordpress < /tmp/wordpress-db.sql && touch /home/wordpress/db-created',
+    creates => '/home/wordpress/db-created',
   }
 
-  # Copy a working wp-config.php file for the vagrant setup.
-  file { '/vagrant/wordpress/wp-config.php':
+  # Copy a working wp-config.php file for the wordpress setup.
+  file { '/wordpress/wordpress/wp-config.php':
     source => 'puppet:///modules/wordpress/wp-config.php'
   }
 

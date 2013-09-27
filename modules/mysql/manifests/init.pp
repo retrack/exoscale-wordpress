@@ -2,7 +2,7 @@
 
 class mysql::install {
 
-  $password = 'vagrant'
+  $password = 'wordpress'
 
   package { [
       'mysql-client',
