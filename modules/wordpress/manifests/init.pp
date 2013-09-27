@@ -2,6 +2,11 @@
 
 class wordpress::install {
 
+  # Create a directory
+  file { "/wordpress":
+    ensure => "directory",
+  }
+
   # Create the Wordpress database
   exec { 'create-database':
     unless  => '/usr/bin/mysql -u root -pwordpress wordpress',

@@ -11,16 +11,6 @@ class apache2::install {
     require => Package['apache2'],
   }
 
-  # the httpd.conf change the user/group that apache uses to run its process
-  file { '/etc/apache2/conf.d/user':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    source  => '/etc/puppet/modules/apache2/files/httpd.conf',
-    require => Package['apache2'],
-    notify  => Service['apache2'],
-  }
 
   file { '/etc/apache2/sites-available/default':
     ensure  => file,
