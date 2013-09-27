@@ -37,7 +37,7 @@ class wordpress::install {
   # Import a MySQL database for a basic wordpress site.
   file { '/tmp/wordpress-db.sql':
     ensure => file,
-    path => '/tmp/wordpress-db.sql'
+    path => '/tmp/wordpress-db.sql',
     content => template('wordpress/wordpress-db.sql.erb');
   }
 
