@@ -1,7 +1,7 @@
 exoscale-wordpress
 ==================
 
-A wordpress build environment to deploy on exoscale or any cloud-init compatible cloud.
+A wordpress environment to deploy on [exoscale](http://www.exoscale.ch/open-cloud/compute/) or any cloud-init compatible cloud with plain vanilla Ubuntu instances.
 
 ## Principles:
 
@@ -19,7 +19,7 @@ Keep it mind that it is possible to go much further in automation deployment.
 
 ### Start an instance
 
-Launch a new Ubuntu instance with the service offering you wish:
+Launch a new Ubuntu instance with the service offering you wish. Insert it in a security group or with firewall rules which enable port 80/http.
 
 ### User Data with Cloud-init
 
