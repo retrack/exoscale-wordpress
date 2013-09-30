@@ -44,6 +44,11 @@ In the User Data tab, input the script below:
 
     puppet apply /etc/puppet/manifests/init.pp
 
+### Start using your fresh  Wordpres
+
+Point your browser to your instance public IP address and you should be asked for an admin email and password. 
+
+
 ## Modify:
 
 To modify your configuration, clone this very repository and adjust files and manifests accordingly. 
