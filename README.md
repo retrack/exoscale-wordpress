@@ -54,6 +54,11 @@ Point your browser to your instance public IP address and you should be asked fo
 To modify your configuration, clone this very repository and adjust files and manifests accordingly. 
 Do not forget to replace the URL in the userdata script.
 
+## TODO
+
+* Salt wp-config.php
+* Better mysql DB security
+
 ## Credits:
 
 this is inspired by the work of [chadthompson]: http://chadthompson.me on https://github.com/chad-thompson/vagrantpress
