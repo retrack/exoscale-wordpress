@@ -52,6 +52,7 @@ class wordpress::install {
   # Copy a working wp-config.php file for the wordpress setup.
   file { '/wordpress/wordpress/wp-config.php':
     ensure => file,
+    owner   => www-data,
     path => '/wordpress/wordpress/wp-config.php',
     content => template('wordpress/wp-config.php.erb'),
   }
