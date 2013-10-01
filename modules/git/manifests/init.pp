@@ -1,6 +1,6 @@
 # Install git
 
-class git::install {
+class git {
 
   package{'git':
     ensure=>present,

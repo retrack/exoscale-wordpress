@@ -1,0 +1,20 @@
+server {
+        listen 80;
+        server_name <%= server_names %>;
+        access_log /var/log/nginx/wordpress.log;
+        root <%= wordpress_dir %>;
+
+        index index.php;
+        real_ip_header X-Forwarded-For;
+
+	location / {
+		 if (!-e $request_filename) {
+		    rewrite ^/(.*)$ /index.php?/$1 last;
+		 }
+	}
+
+        location ~ \.php$ {
+                fastcgi_pass wordpress;
+                include fastcgi_params;
+        }
+}
