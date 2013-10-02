@@ -19,7 +19,7 @@ Keep it mind that it is possible to go much further in automation deployment.
 
 ### Start an instance
 
-Launch a new Ubuntu instance with the service offering you wish. Insert it in a security group or with firewall rules which enable port 80/http.
+Launch a new Ubuntu 13.04 instance with the service offering you wish. Insert it in a security group or with firewall rules which enable port 80/http.
 
 ### User Data with Cloud-init
 
