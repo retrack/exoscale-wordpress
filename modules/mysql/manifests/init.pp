@@ -1,8 +1,8 @@
 #Install MySQL
 
-class mysql::install {
+class mysql {
 
-  $password = 'wordpress'
+  $password = extlookup('wordpress-db-root-password')
 
   package { [
       'mysql-client',
